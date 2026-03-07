@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniil Tregubov</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --text: #1a1a1a;
+      --muted: #666;
+      --accent: #c84b2f;
+      --border: #ddd;
+      --link: #1a1a1a;
+      --link-hover: #c84b2f;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    /* Header */
+    .site-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4rem;
+    }
+
+    /* Section titles */
+    h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    h3:first-of-type { margin-top: 0; }
+
+    /* About section */
+    .about {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .about-photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: grayscale(20%);
+      border: 1px solid var(--border);
+    }
+
+    .about-photo-placeholder {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: #e0ddd6;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+      color: #333;
+    }
+
+    /* Links section */
+    .links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0;
+    }
+
+    .links-grid a {
+      display: inline-block;
+      color: var(--link);
+      text-decoration: none;
+      font-size: 1rem;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.15s, border-color 0.15s;
+      margin-right: 1.4rem;
+      padding-bottom: 1px;
+    }
+
+    .links-grid a:hover {
+      color: var(--link-hover);
+      border-color: var(--link-hover);
+    }
+
+    /* Content list */
+    .content-list {
+      list-style: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .content-list li {
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 0;
+    }
+
+    .content-list li a {
+      color: var(--link);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.15s;
+    }
+
+    .content-list li a:hover { color: var(--link-hover); }
+
+    .content-list li span {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .content-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-right: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* Fade in */
+    .container {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .about { flex-direction: column; gap: 1.25rem; }
+      .container { padding: 3rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <p class="site-title">daniil tregubov</p>
+
+    <!-- About -->
+    <h3>About me</h3>
+    <div class="about">
+      <!-- Замени src на ссылку на своё фото -->
+      <div class="about-photo-placeholder">фото</div>
+      <p class="about-text">
+        Привет! Я Даниил Трегубов — Senior ML Engineer в T-Bank по будням,
+        исследователь LLM-систем по выходным, и строитель собственных продуктов
+        в промежутках между.
+      </p>
+    </div>
+
+    <!-- Links -->
+    <h3>Links</h3>
+    <div class="links-grid">
+      <a href="https://t.me/YOUR_TG" target="_blank">Telegram</a>
+      <a href="https://github.com/YOUR_GH" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/YOUR_LI" target="_blank">LinkedIn</a>
+      <a href="mailto:your@email.com">Email</a>
+      <a href="#">CV</a>
+    </div>
+
+    <!-- Content -->
+    <h3>Content</h3>
+    <ul class="content-list">
+      <li>
+        <span class="content-tag">Статья</span>
+        <span>Как устроена оценка качества LLM в продакшене</span>
+      </li>
+      <li>
+        <span class="content-tag">Доклад</span>
+        <a href="#" target="_blank">Построение LLM-судей и аннотационных пайплайнов</a>
+      </li>
+      <li>
+        <span class="content-tag">Проект</span>
+        <a href="#" target="_blank">T-Alice — AI-ассистент T-Bank</a>
+      </li>
+      <li>
+        <span class="content-tag">TikTok</span>
+        <a href="#" target="_blank">Coding tutorials — как устроены трансформеры</a>
+      </li>
+      <li>
+        <span class="content-tag">Проект</span>
+        <a href="#" target="_blank">AI-ассистент для 3D CAD инженеров</a>
+      </li>
+    </ul>
+
+    <footer>© Daniil Tregubov</footer>
+  </div>
+</body>
+</html>
