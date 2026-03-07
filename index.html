@@ -212,11 +212,16 @@
     <!-- Links -->
     <h3>Links</h3>
     <div class="links-grid">
-      <a href="https://t.me/YOUR_TG" target="_blank">Telegram</a>
-      <a href="https://github.com/YOUR_GH" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/YOUR_LI" target="_blank">LinkedIn</a>
-      <a href="mailto:your@email.com">Email</a>
-      <a href="#">CV</a>
+      <a href="https://t.me/YOUR_TG" target="_blank"
+         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_telegram'});">Telegram</a>
+      <a href="https://github.com/YOUR_GH" target="_blank"
+         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_github'});">GitHub</a>
+      <a href="https://linkedin.com/in/YOUR_LI" target="_blank"
+         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_linkedin'});">LinkedIn</a>
+      <a href="mailto:your@email.com"
+         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_email'});">Email</a>
+      <a href="#"
+         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_cv'});">CV</a>
     </div>
 
     <!-- Content -->
@@ -224,23 +229,27 @@
     <ul class="content-list">
       <li>
         <span class="content-tag">Статья</span>
-        <span>Как устроена оценка качества LLM в продакшене</span>
+        <span onclick="gtag('event', 'select_content', {'content_type': 'article', 'item_id': 'llm_eval'});">Как устроена оценка качества LLM в продакшене</span>
       </li>
       <li>
         <span class="content-tag">Доклад</span>
-        <a href="#" target="_blank">Построение LLM-судей и аннотационных пайплайнов</a>
+        <a href="#" target="_blank"
+           onclick="gtag('event', 'select_content', {'content_type': 'talk', 'item_id': 'llm_judges'});">Построение LLM-судей и аннотационных пайплайнов</a>
       </li>
       <li>
         <span class="content-tag">Проект</span>
-        <a href="#" target="_blank">T-Alice — AI-ассистент T-Bank</a>
+        <a href="#" target="_blank"
+           onclick="gtag('event', 'select_content', {'content_type': 'project', 'item_id': 't_alice'});">T-Alice — AI-ассистент T-Bank</a>
       </li>
       <li>
         <span class="content-tag">TikTok</span>
-        <a href="#" target="_blank">Coding tutorials — как устроены трансформеры</a>
+        <a href="#" target="_blank"
+           onclick="gtag('event', 'select_content', {'content_type': 'video', 'item_id': 'transformers_tutorial'});">Coding tutorials — как устроены трансформеры</a>
       </li>
       <li>
         <span class="content-tag">Проект</span>
-        <a href="#" target="_blank">AI-ассистент для 3D CAD инженеров</a>
+        <a href="#" target="_blank"
+           onclick="gtag('event', 'select_content', {'content_type': 'project', 'item_id': 'cad_ai'});">AI-ассистент для 3D CAD инженеров</a>
       </li>
     </ul>
 
