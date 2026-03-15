@@ -1,259 +1,194 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daniil Tregubov</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX2J4N36C4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WX2J4N36C4');
-  </script>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="icon" href="images/face.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="keywords" content="zimerman,tsimerman,цимерман,даниил,daniil,daniel,zimmerman,циммерман,tsimmerman">
+    <meta
+      name="description"
+      content="Daniil Zimerman's personal site. Личный сайт Даниила Цимермана."
+    />
+    <link rel="apple-touch-icon" href="images/face.png" />
 
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <title>солемн лидер</title>
 
-    :root {
-      --bg: #f7f5f0;
-      --text: #1a1a1a;
-      --muted: #666;
-      --accent: #c84b2f;
-      --border: #ddd;
-      --link: #1a1a1a;
-      --link-hover: #c84b2f;
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
 
-    html { font-size: 16px; }
+        main {
+            flex: 1 0 auto;
+            background-color: #F5F5F5;
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'EB Garamond', Georgia, serif;
-      font-size: 1.125rem;
-      line-height: 1.7;
-      min-height: 100vh;
-    }
+        .margin-btn {
+            margin-right: 1%;
+            margin-bottom: 1%;
+        }
 
-    .container {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 5rem 2rem 6rem;
-    }
-
-    /* Header */
-    .site-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4rem;
-    }
-
-    /* Section titles */
-    h3 {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-      margin-top: 3rem;
-    }
-
-    h3:first-of-type { margin-top: 0; }
-
-    /* About section */
-    .about {
-      display: flex;
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .about-photo {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      filter: grayscale(20%);
-      border: 1px solid var(--border);
-    }
-
-    .about-photo-placeholder {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      background: #e0ddd6;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    .about-text {
-      font-size: 1.05rem;
-      color: #333;
-    }
-
-    /* Links section */
-    .links-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0;
-    }
-
-    .links-grid a {
-      display: inline-block;
-      color: var(--link);
-      text-decoration: none;
-      font-size: 1rem;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.15s, border-color 0.15s;
-      margin-right: 1.4rem;
-      padding-bottom: 1px;
-    }
-
-    .links-grid a:hover {
-      color: var(--link-hover);
-      border-color: var(--link-hover);
-    }
-
-    /* Content list */
-    .content-list {
-      list-style: none;
-      border-top: 1px solid var(--border);
-    }
-
-    .content-list li {
-      border-bottom: 1px solid var(--border);
-      padding: 0.9rem 0;
-    }
-
-    .content-list li a {
-      color: var(--link);
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.15s;
-    }
-
-    .content-list li a:hover { color: var(--link-hover); }
-
-    .content-list li span {
-      font-size: 1rem;
-      color: #333;
-    }
-
-    .content-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-right: 0.5rem;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 4rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 300;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    /* Fade in */
-    .container {
-      animation: fadeUp 0.5s ease both;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 480px) {
-      .about { flex-direction: column; gap: 1.25rem; }
-      .container { padding: 3rem 1.25rem 4rem; }
-    }
-  </style>
+        .container {
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
+    <script>
+        AOS.init({ duration: 2000, once: true });
+    </script>
+    <main>
+    <div class="container">
+        <div class="container">
+            <h3 class="title">About me</h3>
+            <div class="row" data-aos="fade-down">
+                <div class="col s6 m4 offset-s3 offset-m4" data-aos="fade-down">
+                    <img src="images/me2.jpg" class="responsive-img circle" height="50" alt="Daniil Zimerman">
+                  </div>
+            </div>
+            <div class="col s7" data-aos="fade-up">
+                <p class="flow-text">Hello! I'm Daniil Zimerman, machine learning engineer on Mondays, backend developer on Fridays, and a product-market fit seeker on Sundays.</p>
+            </div>
+        </div>
 
-    <p class="site-title">daniil tregubov</p>
+        <div class="container">
+            <h3 class="title">Links</h3>
+            <div class="center-align" data-aos="fade-right">
+                <a class="waves-effect waves-light btn black margin-btn" href="https://t.me/solemn_leader" target="_blank"><i class="fa fa-telegram"></i> Telegram</a>
+                <a class="waves-effect waves-light btn black margin-btn" href="https://instagram.com/solemn_leader" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+                <a class="waves-effect waves-light btn black margin-btn" href="https://vk.com/solemn_leader" target="_blank"><i class="fa fa-vk"></i> VK</a>
+                <a class="waves-effect waves-light btn black margin-btn" href="https://www.linkedin.com/in/solemn-leader/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                <a class="waves-effect waves-light btn black margin-btn" href="https://github.com/solemn-leader" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                <a class="waves-effect waves-light btn black margin-btn" href="mailto:solemnda@gmail.com" target="_blank"><i class="fa fa-envelope"></i> Email</a>
+                <a class="waves-effect waves-light btn black margin-btn" href="https://docs.google.com/document/d/1NDgEZasa5pOJ_xrOjheTqie9MfDG38zug8kNcdPoffY/edit?usp=sharing" target="_blank"><i class="fa fa-file-text"></i> ML Engineer CV</a>
+                <a class="waves-effect waves-light btn black margin-btn" href="essays.html"><i class="fa fa-pencil"></i> Essays</a>
+            </div>
+        </div>
 
-    <!-- About -->
-    <h3>About me</h3>
-    <div class="about">
-      <!-- Замени src на ссылку на своё фото -->
-      <div class="about-photo-placeholder">фото</div>
-      <p class="about-text">
-        Привет! Я Даниил Трегубов — Senior ML Engineer в T-Bank по будням,
-        исследователь LLM-систем по выходным, и строитель собственных продуктов
-        в промежутках между.
-      </p>
+        <div class="container">
+            <h3>Content</h3>
+            <div class="row" data-aos="fade-left">
+            <div class="card">
+                <div class="card-image">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/cMk4Qye-1N0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                </div>
+                <div class="card-action black-text">
+                <h6> My speech on how to create nontoxic chatbots (RU) </h6>
+                </div>
+            </div>
+            </div>
+            <div class="row" data-aos="fade-right">
+            <a href="https://news.itmo.ru/en/university_live/achievements/news/9976/" target="_blank">
+            <div class="card">
+            <div class="card-image">
+                <img src="images/anotherme.png">
+            </div>
+            <div class="card-action black-text">
+            <u><h6> My interview after AI journey victory <i class="fa fa-external-link" aria-hidden="true"></i></h6></u>
+            </div>
+            </div>
+            </a>
+            </div>
+            <div class="row" data-aos="fade-left">
+            <div class="card">
+            <div class="card-image">
+            <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/7yeGLKKVS6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      </div>
+            </div>
+            <div class="card-action black-text">
+                <h6> <b>Data Fest</b>: How I started IT career being a 17yo teen living in a small town (RU) </h6>
+            </div>
+            </div>
+            </div>
+            <div class="row" data-aos="fade-right">
+            <div class="card">
+                <div class="card-image">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-sjr4stWJaw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      </div>
+                </div>
+                <div class="card-action black-text">
+                <h6> <b>DUMP</b>: How to create few-shot intent classification system (RU) </h6>
+                </div>
+            </div>
+            </div>
+            <div class="row" data-aos="fade-left">
+            <a href="https://habr.com/en/company/tinkoff/blog/696756/" target="_blank">
+                <div class="card">
+                <div class="card-image">
+                    <img src="https://habrastorage.org/r/w1560/getpro/habr/upload_files/e61/ccf/828/e61ccf828fe0dd0ac0cc798578688bb4.png">
+                </div>
+                <div class="card-action black-text">
+                    <u><h6> <b>Habr</b>: How to create few-shot intent classification system (RU) <i class="fa fa-external-link" aria-hidden="true"></i></h6></u>
+                </div>
+                </div>
+            </a>
+            </div>
+            <div class="row" data-aos="fade-right">
+            <div class="card">
+                <div class="card-image">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/24qzhhluHWA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      </div>
+                </div>
+                <div class="card-action black-text">
+                <h6> <b>PyCon master class</b>: creating chatbot within 3 hours (RU) </h6>
+                </div>
+            </div>
+            </div>
+            <div class="row" data-aos="fade-left">
+            <div class="card">
+                <div class="card-image">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/oOUswl0GxS0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      </div>
+                </div>
+                <div class="card-action black-text">
+                <h6> <b>Sber AI Bootcamp</b>: Introduction to recurrent neural networks (RU) </h6>
+                </div>
+            </div>
+            </div>
+            <div class="row" data-aos="fade-right">
+            <div class="card">
+                <div class="card-image">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Nl85GXAiQkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      </div>
+                </div>
+                <div class="card-action black-text">
+                <h6> <b>Advanced DL</b> lecture: Introduction to NLP: Tokens, tf-idf, bpe, word2vec, RNNs (RU) </h6>
+                </div>
+            </div>
+            </div>
+            <div class="row" data-aos="fade-left">
+            <div class="card">
+                <div class="card-image">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kJmABeZPYns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      </div>
+                </div>
+                <div class="card-action black-text">
+                <h6> <b>Advanced DL</b> seminar: Introduction to NLP: Tokens, tf-idf, bpe, word2vec, RNNs (RU) </h6>
+                </div>
+            </div>
+            </div>
+
+        </div>
+
+
     </div>
+    </main>
+    <footer class="page-footer black">
+        <div class="footer-copyright black white-text">
+            <div class="container">&copy; Daniil Zimerman</div>
+        </div>
+    </footer>
 
-    <!-- Links -->
-    <h3>Links</h3>
-    <div class="links-grid">
-      <a href="https://t.me/YOUR_TG" target="_blank"
-         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_telegram'});">Telegram</a>
-      <a href="https://github.com/YOUR_GH" target="_blank"
-         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_github'});">GitHub</a>
-      <a href="https://linkedin.com/in/YOUR_LI" target="_blank"
-         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_linkedin'});">LinkedIn</a>
-      <a href="mailto:your@email.com"
-         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_email'});">Email</a>
-      <a href="#"
-         onclick="gtag('event', 'ContactClick', {'page': 'main', 'component': 'link_cv'});">CV</a>
-    </div>
-
-    <!-- Content -->
-    <h3>Content</h3>
-    <ul class="content-list">
-      <li>
-        <span class="content-tag">Статья</span>
-        <span onclick="gtag('event', 'select_content', {'content_type': 'article', 'item_id': 'llm_eval'});">Как устроена оценка качества LLM в продакшене</span>
-      </li>
-      <li>
-        <span class="content-tag">Доклад</span>
-        <a href="#" target="_blank"
-           onclick="gtag('event', 'select_content', {'content_type': 'talk', 'item_id': 'llm_judges'});">Построение LLM-судей и аннотационных пайплайнов</a>
-      </li>
-      <li>
-        <span class="content-tag">Проект</span>
-        <a href="#" target="_blank"
-           onclick="gtag('event', 'select_content', {'content_type': 'project', 'item_id': 't_alice'});">T-Alice — AI-ассистент T-Bank</a>
-      </li>
-      <li>
-        <span class="content-tag">TikTok</span>
-        <a href="#" target="_blank"
-           onclick="gtag('event', 'select_content', {'content_type': 'video', 'item_id': 'transformers_tutorial'});">Coding tutorials — как устроены трансформеры</a>
-      </li>
-      <li>
-        <span class="content-tag">Проект</span>
-        <a href="#" target="_blank"
-           onclick="gtag('event', 'select_content', {'content_type': 'project', 'item_id': 'cad_ai'});">AI-ассистент для 3D CAD инженеров</a>
-      </li>
-    </ul>
-
-    <footer>© Daniil Tregubov</footer>
-  </div>
 </body>
 </html>
