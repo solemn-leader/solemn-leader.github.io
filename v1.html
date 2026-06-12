@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f0e8" />
+    <meta name="keywords" content="zimerman,tsimerman,цимерман,даниил,daniil,daniel,zimmerman,циммерман,tsimmerman">
+    <meta name="description" content="Daniil Zimerman's personal site. Личный сайт Даниила Цимермана." />
+    <link rel="icon" href="images/face.png" />
+    <link rel="apple-touch-icon" href="images/face.png" />
+    <title>solemn_leader</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Libre+Barcode+39+Text&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f5f0e8;
+            --fg: #1a1a1a;
+            --fg-dim: #666;
+            --border: #1a1a1a;
+            --accent-red: #ff3a3a;
+            --accent-blue: #3a5eff;
+            --accent-yellow: #ffe03a;
+            --accent-green: #2ade6a;
+            --accent-pink: #ff6eb4;
+            --accent-orange: #ff8a3a;
+            --card-bg: #fff;
+            --mono: 'Space Mono', monospace;
+            --sans: 'Space Grotesk', sans-serif;
+            --barcode: 'Libre Barcode 39 Text', cursive;
+            --border-w: 3px;
+            --border-heavy: 5px;
+            --shadow: 6px 6px 0 #1a1a1a;
+            --shadow-sm: 4px 4px 0 #1a1a1a;
+            --shadow-hover: 8px 8px 0 #1a1a1a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: var(--bg); border-left: var(--border-w) solid var(--border); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-red); border: 2px solid var(--border); }
+
+        ::selection {
+            background: var(--accent-yellow);
+            color: var(--fg);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* TICKER */
+        .ticker {
+            background: var(--fg);
+            color: var(--bg);
+            padding: 8px 0;
+            border-bottom: var(--border-heavy) solid var(--fg);
+            overflow: hidden;
+            white-space: nowrap;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .ticker-inner {
+            display: inline-block;
+            animation: ticker 20s linear infinite;
+        }
+        .ticker-inner span {
+            padding: 0 2rem;
+        }
+        .ticker-inner .sep {
+            color: var(--accent-red);
+            padding: 0 0.5rem;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* NAV */
+        nav {
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: var(--border-w) solid var(--border);
+            background: var(--bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo {
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: var(--fg);
+            background: var(--accent-yellow);
+            padding: 4px 12px;
+            border: var(--border-w) solid var(--border);
+        }
+        .nav-links {
+            display: flex;
+            gap: 4px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: var(--fg);
+            padding: 6px 14px;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            transition: all 0.15s;
+        }
+        .nav-links a:hover {
+            border-color: var(--border);
+            background: var(--accent-yellow);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0 60px;
+            border-bottom: var(--border-heavy) solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-inner {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .hero-photo-wrap {
+            position: relative;
+        }
+        .hero-photo-wrap::before {
+            display: none;
+        }
+        .hero-photo {
+            width: 300px;
+            height: auto;
+            border: none;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(8px 8px 0 var(--accent-blue));
+            display: block;
+            transition: filter 0.3s;
+        }
+        .hero-photo:hover {
+            filter: drop-shadow(8px 8px 0 var(--accent-red));
+        }
+        .hero-content {
+            padding-top: 8px;
+        }
+        .hero-name {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+        .hero-name .first {
+            display: block;
+        }
+        .hero-name .last {
+            display: block;
+            -webkit-text-stroke: 2px var(--fg);
+            color: transparent;
+        }
+        .hero-tagline {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+        .hero-tagline .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            margin: 3px 4px 3px 0;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            font-size: 0.8rem;
+            transition: all 0.15s;
+        }
+        .hero-tagline .tag:nth-child(1) { border-color: var(--accent-red); }
+        .hero-tagline .tag:nth-child(2) { border-color: var(--accent-blue); }
+        .hero-tagline .tag:nth-child(3) { border-color: var(--accent-green); }
+        .hero-tagline .tag:nth-child(4) { border-color: var(--accent-pink); }
+        .hero-tagline .tag:nth-child(5) { border-color: var(--accent-orange); }
+        .hero-tagline .tag:hover {
+            transform: translateY(-2px) rotate(-1deg);
+            box-shadow: var(--shadow-sm);
+        }
+        .hero-barcode {
+            font-family: var(--barcode);
+            font-size: 3rem;
+            color: var(--fg-dim);
+            margin-top: 24px;
+            opacity: 0.3;
+            user-select: none;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 60px 0;
+            border-bottom: var(--border-heavy) solid var(--border);
+        }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .section-number {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            background: var(--fg);
+            color: var(--bg);
+            padding: 4px 10px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        .section-title {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        /* LINKS GRID */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--card-bg);
+            border: var(--border-w) solid var(--border);
+            text-decoration: none;
+            color: var(--fg);
+            transition: all 0.15s;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        .link-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            transition: width 0.15s;
+        }
+        .link-card:nth-child(1)::after { background: var(--accent-blue); }
+        .link-card:nth-child(2)::after { background: var(--accent-pink); }
+        .link-card:nth-child(3)::after { background: var(--accent-blue); }
+        .link-card:nth-child(4)::after { background: var(--accent-blue); }
+        .link-card:nth-child(5)::after { background: var(--accent-green); }
+        .link-card:nth-child(6)::after { background: var(--accent-red); }
+        .link-card:nth-child(7)::after { background: var(--accent-orange); }
+        .link-card:nth-child(8)::after { background: var(--accent-yellow); }
+        .link-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-hover);
+        }
+        .link-card:hover::after {
+            width: 100%;
+            opacity: 0.12;
+        }
+        .link-card .link-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--border);
+            background: var(--bg);
+        }
+        .link-card .link-label {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .link-card .link-sub {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--fg-dim);
+            margin-top: 2px;
+        }
+
+        /* TALKS GRID */
+        .talks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .talk-card {
+            background: var(--card-bg);
+            border: var(--border-w) solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all 0.15s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .talk-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 10px 10px 0 var(--border);
+        }
+        .talk-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-size: cover;
+            background-position: center;
+            border-bottom: var(--border-w) solid var(--border);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .talk-thumb .play-btn {
+            width: 64px;
+            height: 64px;
+            background: var(--accent-red);
+            border: var(--border-w) solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+            box-shadow: var(--shadow-sm);
+        }
+        .talk-card:hover .play-btn {
+            transform: scale(1.1) rotate(-3deg);
+        }
+        .play-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+            margin-left: 4px;
+        }
+        .talk-type-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            border: 2px solid var(--border);
+            background: var(--accent-yellow);
+            box-shadow: 2px 2px 0 var(--border);
+        }
+        .talk-type-badge.article {
+            background: var(--accent-green);
+        }
+        .talk-type-badge.workshop {
+            background: var(--accent-pink);
+        }
+        .talk-type-badge.lecture {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+        .talk-type-badge.seminar {
+            background: var(--accent-orange);
+        }
+        .talk-lang-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            box-shadow: 2px 2px 0 var(--border);
+        }
+        .talk-body {
+            padding: 18px 20px;
+        }
+        .talk-title {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+        .talk-number {
+            font-family: var(--mono);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--bg);
+            -webkit-text-stroke: 2px var(--border);
+            position: absolute;
+            bottom: 8px;
+            right: 14px;
+            line-height: 1;
+            user-select: none;
+            opacity: 0.4;
+        }
+
+        /* VIDEO MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-box {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            border: var(--border-heavy) solid #fff;
+            box-shadow: 12px 12px 0 var(--accent-red);
+            background: #000;
+            transform: scale(0.9) rotate(-1deg);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.active .modal-box {
+            transform: scale(1) rotate(0deg);
+        }
+        .modal-box .close-btn {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 44px;
+            height: 44px;
+            background: var(--accent-red);
+            border: var(--border-w) solid #fff;
+            color: #fff;
+            font-family: var(--mono);
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.15s;
+            box-shadow: 3px 3px 0 #000;
+        }
+        .modal-box .close-btn:hover {
+            transform: rotate(90deg) scale(1.1);
+        }
+        .modal-box .video-wrap {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .modal-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 24px;
+            text-align: center;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            background: var(--fg);
+            color: var(--bg);
+            border-top: var(--border-heavy) solid var(--accent-red);
+        }
+        footer .footer-barcode {
+            font-family: var(--barcode);
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            opacity: 0.4;
+        }
+        footer a {
+            color: var(--accent-yellow);
+        }
+
+        /* ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .stagger-1 { transition-delay: 0.05s; }
+        .stagger-2 { transition-delay: 0.1s; }
+        .stagger-3 { transition-delay: 0.15s; }
+        .stagger-4 { transition-delay: 0.2s; }
+        .stagger-5 { transition-delay: 0.25s; }
+        .stagger-6 { transition-delay: 0.3s; }
+        .stagger-7 { transition-delay: 0.35s; }
+        .stagger-8 { transition-delay: 0.4s; }
+        .stagger-9 { transition-delay: 0.45s; }
+
+        /* DECORATIVE */
+        .deco-stripe {
+            height: 8px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--accent-red) 0,
+                var(--accent-red) 20%,
+                var(--accent-yellow) 20%,
+                var(--accent-yellow) 40%,
+                var(--accent-blue) 40%,
+                var(--accent-blue) 60%,
+                var(--accent-green) 60%,
+                var(--accent-green) 80%,
+                var(--accent-pink) 80%,
+                var(--accent-pink) 100%
+            );
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+            .hero-photo-wrap {
+                margin: 0 auto;
+            }
+            .hero-tagline {
+                margin: 0 auto;
+            }
+            .hero-barcode {
+                display: none;
+            }
+            .nav-links {
+                gap: 0;
+            }
+            .nav-links a {
+                padding: 6px 8px;
+                font-size: 0.7rem;
+            }
+            .talks-grid {
+                grid-template-columns: 1fr;
+            }
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .hero-photo {
+                width: 240px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 48px 0 40px;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .hero-photo {
+                width: 200px;
+            }
+        }
+    </style>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109810709', 'ym');
+
+        ym(109810709, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/109810709" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+        <span>Daniil Zimerman</span><span class="sep">//</span>
+        <span>ML Engineer</span><span class="sep">//</span>
+        <span>Teacher</span><span class="sep">//</span>
+        <span>Vibe-Coder</span><span class="sep">//</span>
+        <span>Striker</span><span class="sep">//</span>
+        <span>solemn_leader</span><span class="sep">//</span>
+        <span>Daniil Zimerman</span><span class="sep">//</span>
+        <span>ML Engineer</span><span class="sep">//</span>
+        <span>Teacher</span><span class="sep">//</span>
+        <span>Vibe-Coder</span><span class="sep">//</span>
+        <span>Striker</span><span class="sep">//</span>
+        <span>solemn_leader</span><span class="sep">//</span>
+    </div>
+</div>
+
+<!-- DECO STRIPE -->
+<div class="deco-stripe"></div>
+
+<!-- NAV -->
+<nav>
+    <a href="#" class="nav-logo">s_l</a>
+    <ul class="nav-links">
+        <li><a href="#links">Links</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="essays.html">Essays</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-photo-wrap reveal-left">
+                <img src="images/me2.jpg" alt="Daniil Zimerman" class="hero-photo" />
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-name reveal">
+                    <span class="first">Daniil</span>
+                    <span class="last">Zimerman</span>
+                </h1>
+                <div class="hero-tagline reveal stagger-1">
+                    <span class="tag">striker</span>
+                    <span class="tag">teacher</span>
+                    <span class="tag">machine learning engineer</span>
+                    <span class="tag">vibe-coder</span>
+                    <span class="tag">solemn_leader</span>
+                </div>
+                <div class="hero-barcode reveal stagger-2">*SOLEMN LEADER*</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LINKS -->
+<section class="section" id="links">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Connect</h2>
+        </div>
+        <div class="links-grid">
+            <a href="https://t.me/solemn_leader" target="_blank" rel="noopener" class="link-card reveal stagger-1">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </div>
+                <div>
+                    <div class="link-label">Telegram</div>
+                    <div class="link-sub">@solemn_leader</div>
+                </div>
+            </a>
+            <a href="https://instagram.com/solemn_leader" target="_blank" rel="noopener" class="link-card reveal stagger-2">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </div>
+                <div>
+                    <div class="link-label">Instagram</div>
+                    <div class="link-sub">@solemn_leader</div>
+                </div>
+            </a>
+            <a href="https://vk.com/solemn_leader" target="_blank" rel="noopener" class="link-card reveal stagger-3">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.678.847 2.456 2.27 4.605 2.862 4.605.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/></svg>
+                </div>
+                <div>
+                    <div class="link-label">VKontakte</div>
+                    <div class="link-sub">solemn_leader</div>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/solemn-leader/" target="_blank" rel="noopener" class="link-card reveal stagger-4">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </div>
+                <div>
+                    <div class="link-label">LinkedIn</div>
+                    <div class="link-sub">solemn-leader</div>
+                </div>
+            </a>
+            <a href="https://github.com/solemn-leader" target="_blank" rel="noopener" class="link-card reveal stagger-5">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </div>
+                <div>
+                    <div class="link-label">GitHub</div>
+                    <div class="link-sub">solemn-leader</div>
+                </div>
+            </a>
+            <a href="mailto:solemnda@gmail.com" class="link-card reveal stagger-6">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                    <div class="link-label">Email</div>
+                    <div class="link-sub">solemnda@gmail.com</div>
+                </div>
+            </a>
+            <a href="https://docs.google.com/document/d/1NDgEZasa5pOJ_xrOjheTqie9MfDG38zug8kNcdPoffY/edit?usp=sharing" target="_blank" rel="noopener" class="link-card reveal stagger-7">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <div>
+                    <div class="link-label">ML Engineer CV</div>
+                    <div class="link-sub">Google Docs</div>
+                </div>
+            </a>
+            <a href="essays.html" class="link-card reveal stagger-8">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <div>
+                    <div class="link-label">Essays</div>
+                    <div class="link-sub">Thoughts &amp; writing</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- DECO -->
+<div class="deco-stripe"></div>
+
+<!-- TALKS -->
+<section class="section" id="talks">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Talks &amp; Content</h2>
+        </div>
+        <div class="talks-grid">
+
+            <!-- 1 -->
+            <div class="talk-card reveal stagger-1" data-youtube="cMk4Qye-1N0">
+                <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/cMk4Qye-1N0/hqdefault.jpg')">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    <span class="talk-type-badge">talk</span>
+                    <span class="talk-lang-badge">RU</span>
+                </div>
+                <div class="talk-body">
+                    <div class="talk-title">How to create nontoxic chatbots</div>
+                </div>
+                <span class="talk-number">01</span>
+            </div>
+
+            <!-- 2 -->
+            <a href="https://news.itmo.ru/en/university_live/achievements/news/9976/" target="_blank" rel="noopener" class="talk-card reveal stagger-2" style="text-decoration:none;color:inherit;">
+                <div class="talk-thumb" style="background:var(--accent-green);display:flex;align-items:center;justify-content:center;">
+                    <div style="font-family:var(--mono);font-size:2.5rem;font-weight:700;color:var(--fg);opacity:0.6;">&#9997;</div>
+                    <span class="talk-type-badge article">article</span>
+                    <span class="talk-lang-badge">EN</span>
+                </div>
+                <div class="talk-body">
+                    <div class="talk-title">Interview after AI Journey victory</div>
+                </div>
+                <span class="talk-number">02</span>
+            </a>
+
+            <!-- 3 -->
+            <div class="talk-card reveal stagger-3" data-youtube="7yeGLKKVS6I">
+                <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/7yeGLKKVS6I/hqdefault.jpg')">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    <span class="talk-type-badge">talk</span>
+                    <span class="talk-lang-badge">RU</span>
+                </div>
+                <div class="talk-body">
+                    <div class="talk-title">Data Fest: How I started IT career being a 17yo teen from a small town</div>
+                </div>
+                <span class="talk-number">03</span>
+            </div>
+
+            <!-- 4 -->
+            <div class="talk-card reveal stagger-4" data-youtube="-sjr4stWJaw">
+                <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/-sjr4stWJaw/hqdefault.jpg')">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    <span class="talk-type-badge">talk</span>
+                    <span class="talk-lang-badge">RU</span>
+                </div>
+                <div class="talk-body">
+                    <div class="talk-title">DUMP: How to create few-shot intent classification system</div>
+                </div>
+                <span class="talk-number">04</span>
+            </div>
+
+            <!-- 5 -->
+            <a href="https://habr.com/en/company/tinkoff/blog/696756/" target="_blank" rel="noopener" class="talk-card reveal stagger-5" style="text-decoration:none;color:inherit;">
+                <div class="talk-thumb" style="background:var(--accent-blue);display:flex;align-items:center;justify-content:center;">
+                    <div style="font-family:var(--mono);font-size:2.5rem;font-weight:700;color:#fff;opacity:0.6;">&#9997;</div>
+                    <span class="talk-type-badge article">article</span>
+                    <span class="talk-lang-badge">RU</span>
+                </div>
+                <div class="talk-body">
+                    <div class="talk-title">Habr: Few-shot intent classification system</div>
+                </div>
+                <span class="talk-number">05</span>
+            </a>
+
+            <!-- 6 -->
+            <div class="talk-card reveal stagger-6" data-youtube="24qzhhluHWA">
+                <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/24qzhhluHWA/hqdefault.jpg')">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    <span class="talk-type-badge workshop">workshop</span>
+                    <span class="talk-lang-badge">RU</span>
+                </div>
+                <div class="talk-body">
+                    <div class="talk-title">PyCon master class: Creating chatbot within 3 hours</div>
+                </div>
+                <span class="talk-number">06</span>
+            </div>
+
+            <!-- 7 -->
+            <div class="talk-card reveal stagger-7" data-youtube="oOUswl0GxS0">
+                <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/oOUswl0GxS0/hqdefault.jpg')">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    <span class="talk-type-badge lecture">lecture</span>
+                    <span class="talk-lang-badge">RU</span>
+                </div>
+                <div class="talk-body">
+                    <div class="talk-title">Sber AI Bootcamp: Introduction to recurrent neural networks</div>
+                </div>
+                <span class="talk-number">07</span>
+            </div>
+
+            <!-- 8 -->
+            <div class="talk-card reveal stagger-8" data-youtube="Nl85GXAiQkA">
+                <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/Nl85GXAiQkA/hqdefault.jpg')">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    <span class="talk-type-badge lecture">lecture</span>
+                    <span class="talk-lang-badge">RU</span>
+                </div>
+                <div class="talk-body">
+                    <div class="talk-title">Advanced DL lecture: Intro to NLP &mdash; tokens, tf-idf, bpe, word2vec, RNNs</div>
+                </div>
+                <span class="talk-number">08</span>
+            </div>
+
+            <!-- 9 -->
+            <div class="talk-card reveal stagger-9" data-youtube="kJmABeZPYns">
+                <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/kJmABeZPYns/hqdefault.jpg')">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                    <span class="talk-type-badge seminar">seminar</span>
+                    <span class="talk-lang-badge">RU</span>
+                </div>
+                <div class="talk-body">
+                    <div class="talk-title">Advanced DL seminar: NLP practice</div>
+                </div>
+                <span class="talk-number">09</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div class="deco-stripe"></div>
+<footer>
+    <div class="footer-barcode">*SOLEMN LEADER 2026*</div>
+    <p>&copy; 2026 Daniil Zimerman. Built with intention and thick borders.</p>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal">
+    <div class="modal-box">
+        <button class="close-btn" id="modalClose">&times;</button>
+        <div class="video-wrap">
+            <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // Scroll reveal
+    var revealEls = document.querySelectorAll('.reveal, .reveal-left');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el) { observer.observe(el); });
+
+    // Video modal
+    var modal = document.getElementById('videoModal');
+    var frame = document.getElementById('videoFrame');
+    var closeBtn = document.getElementById('modalClose');
+
+    document.querySelectorAll('[data-youtube]').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            var id = this.dataset.youtube;
+            frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeModal() {
+        modal.classList.remove('active');
+        frame.src = '';
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
+})();
+</script>
+
+</body>
+</html>
