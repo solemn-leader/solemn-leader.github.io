@@ -1,0 +1,25 @@
+# Daniil Zimerman
+
+> Daniil Zimerman (Даниил Цимерман) is a machine learning engineer, vibe-coder,
+> and teacher. This is his personal site, hosting his CV, talks, and articles.
+
+## About
+
+- Name: Daniil Zimerman (also transliterated Tsimerman / Zimmerman; Russian: Даниил Цимерман)
+- Role: Machine Learning Engineer
+- Focus: machine learning, NLP, few-shot learning
+- Handle: solemn_leader
+
+## Links
+
+- Site: https://daniilzimerman.com/
+- GitHub: https://github.com/solemn-leader
+- LinkedIn: https://www.linkedin.com/in/solemn-leader/
+- Telegram: https://t.me/solemn_leader
+- CV: https://docs.google.com/document/d/1NDgEZasa5pOJ_xrOjheTqie9MfDG38zug8kNcdPoffY/edit
+
+## Selected work & press
+
+- Habr (Tinkoff): Few-shot intent classification system — https://habr.com/en/company/tinkoff/blog/696756/
+- ITMO News interview — https://news.itmo.ru/en/university_live/achievements/news/9976/
+- Essays — https://daniilzimerman.com/essays.html
