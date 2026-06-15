@@ -8,7 +8,7 @@
     <meta name="description" content="Daniil Zimerman (Даниил Цимерман) — machine learning engineer, vibe-coder and teacher. Talks, articles, and CV. Личный сайт Даниила Цимермана." />
     <meta name="yandex-verification" content="9cbceb047764e8e1" />
     <meta name="yandex-verification" content="21feb2e39a25a1bd" />
-    <link rel="icon" href="images/face.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png" />
     <link rel="apple-touch-icon" href="images/face.png" />
     <link rel="canonical" href="https://daniilzimerman.com/" />
     <title>Daniil Zimerman — Machine Learning Engineer | Даниил Цимерман</title>
@@ -17,14 +17,18 @@
     <meta property="og:type" content="profile" />
     <meta property="og:title" content="Daniil Zimerman — Machine Learning Engineer" />
     <meta property="og:description" content="Daniil Zimerman (Даниил Цимерман) — machine learning engineer, vibe-coder, and teacher. Explore my talks, technical articles, CV, and ways to connect." />
-    <meta property="og:image" content="https://daniilzimerman.com/images/me2.jpg" />
+    <meta property="og:image" content="https://daniilzimerman.com/images/og-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Daniil Zimerman — Machine Learning Engineer" />
     <meta property="og:url" content="https://daniilzimerman.com/" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="ru_RU" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Daniil Zimerman — Machine Learning Engineer" />
     <meta name="twitter:description" content="Daniil Zimerman (Даниил Цимерман) — machine learning engineer, vibe-coder, and teacher. Explore my talks, technical articles, CV, and ways to connect." />
-    <meta name="twitter:image" content="https://daniilzimerman.com/images/me2.jpg" />
+    <meta name="twitter:image" content="https://daniilzimerman.com/images/og-card.jpg" />
+    <meta name="twitter:image:alt" content="Daniil Zimerman — Machine Learning Engineer" />
 
     <!-- Person structured data -->
     <script type="application/ld+json">
@@ -295,7 +299,12 @@
                 <h1>Daniil<span class="outline">Zimerman</span></h1>
                 <p class="hero-roles">machine learning engineer, vibe-coder, teacher</p>
             </div>
-            <div class="hero-img"><img src="images/me2.jpg" alt="Daniil Zimerman"></div>
+            <div class="hero-img">
+                <picture>
+                    <source srcset="images/me2.webp" type="image/webp">
+                    <img src="images/me2.jpg" alt="Daniil Zimerman" width="848" height="1077" fetchpriority="high">
+                </picture>
+            </div>
         </section>
     </div>
 
@@ -351,6 +360,12 @@
                     </div>
                     <div><div class="link-label">ML Engineer CV</div><div class="link-sub">Google Docs</div></div>
                 </a>
+                <a href="essays.html" class="link-card reveal stagger-8">
+                    <div class="link-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                    </div>
+                    <div><div class="link-label">Essays</div><div class="link-sub">Notes & writing</div></div>
+                </a>
             </div>
         </section>
     </div>
@@ -365,7 +380,7 @@
                 <h2 class="section-title">Talks & Content</h2>
             </div>
             <div class="talks-grid">
-                <div class="talk-card reveal stagger-1" data-youtube="cMk4Qye-1N0">
+                <a href="https://www.youtube.com/watch?v=cMk4Qye-1N0" target="_blank" rel="noopener" class="talk-card reveal stagger-1" data-youtube="cMk4Qye-1N0">
                     <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/cMk4Qye-1N0/hqdefault.jpg')">
                         <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
                         <span class="talk-type-badge">talk</span>
@@ -373,7 +388,7 @@
                     </div>
                     <div class="talk-body"><div class="talk-title">How to create nontoxic chatbots</div></div>
                     <span class="talk-number">01</span>
-                </div>
+                </a>
                 <a href="https://news.itmo.ru/en/university_live/achievements/news/9976/" target="_blank" rel="noopener" class="talk-card reveal stagger-2">
                     <div class="talk-thumb" style="background:var(--light);display:flex;align-items:center;justify-content:center;">
                         <div style="font-family:var(--mono);font-size:2.5rem;font-weight:700;color:var(--red);opacity:0.5;">&#9997;</div>
@@ -383,7 +398,7 @@
                     <div class="talk-body"><div class="talk-title">Interview after AI Journey victory</div></div>
                     <span class="talk-number">02</span>
                 </a>
-                <div class="talk-card reveal stagger-3" data-youtube="7yeGLKKVS6I">
+                <a href="https://www.youtube.com/watch?v=7yeGLKKVS6I" target="_blank" rel="noopener" class="talk-card reveal stagger-3" data-youtube="7yeGLKKVS6I">
                     <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/7yeGLKKVS6I/hqdefault.jpg')">
                         <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
                         <span class="talk-type-badge">talk</span>
@@ -391,8 +406,8 @@
                     </div>
                     <div class="talk-body"><div class="talk-title">Data Fest: How I started IT career being a 17yo teen from a small town</div></div>
                     <span class="talk-number">03</span>
-                </div>
-                <div class="talk-card reveal stagger-4" data-youtube="-sjr4stWJaw">
+                </a>
+                <a href="https://www.youtube.com/watch?v=-sjr4stWJaw" target="_blank" rel="noopener" class="talk-card reveal stagger-4" data-youtube="-sjr4stWJaw">
                     <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/-sjr4stWJaw/hqdefault.jpg')">
                         <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
                         <span class="talk-type-badge">talk</span>
@@ -400,7 +415,7 @@
                     </div>
                     <div class="talk-body"><div class="talk-title">DUMP: How to create few-shot intent classification system</div></div>
                     <span class="talk-number">04</span>
-                </div>
+                </a>
                 <a href="https://habr.com/en/company/tinkoff/blog/696756/" target="_blank" rel="noopener" class="talk-card reveal stagger-5">
                     <div class="talk-thumb" style="background:var(--light);display:flex;align-items:center;justify-content:center;">
                         <div style="font-family:var(--mono);font-size:2.5rem;font-weight:700;color:var(--red);opacity:0.5;">&#9997;</div>
@@ -410,7 +425,7 @@
                     <div class="talk-body"><div class="talk-title">Habr: Few-shot intent classification system</div></div>
                     <span class="talk-number">05</span>
                 </a>
-                <div class="talk-card reveal stagger-6" data-youtube="24qzhhluHWA">
+                <a href="https://www.youtube.com/watch?v=24qzhhluHWA" target="_blank" rel="noopener" class="talk-card reveal stagger-6" data-youtube="24qzhhluHWA">
                     <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/24qzhhluHWA/hqdefault.jpg')">
                         <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
                         <span class="talk-type-badge workshop">workshop</span>
@@ -418,8 +433,8 @@
                     </div>
                     <div class="talk-body"><div class="talk-title">PyCon master class: Creating chatbot within 3 hours</div></div>
                     <span class="talk-number">06</span>
-                </div>
-                <div class="talk-card reveal stagger-7" data-youtube="oOUswl0GxS0">
+                </a>
+                <a href="https://www.youtube.com/watch?v=oOUswl0GxS0" target="_blank" rel="noopener" class="talk-card reveal stagger-7" data-youtube="oOUswl0GxS0">
                     <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/oOUswl0GxS0/hqdefault.jpg')">
                         <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
                         <span class="talk-type-badge lecture">lecture</span>
@@ -427,8 +442,8 @@
                     </div>
                     <div class="talk-body"><div class="talk-title">Sber AI Bootcamp: Introduction to recurrent neural networks</div></div>
                     <span class="talk-number">07</span>
-                </div>
-                <div class="talk-card reveal stagger-8" data-youtube="Nl85GXAiQkA">
+                </a>
+                <a href="https://www.youtube.com/watch?v=Nl85GXAiQkA" target="_blank" rel="noopener" class="talk-card reveal stagger-8" data-youtube="Nl85GXAiQkA">
                     <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/Nl85GXAiQkA/hqdefault.jpg')">
                         <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
                         <span class="talk-type-badge lecture">lecture</span>
@@ -436,8 +451,8 @@
                     </div>
                     <div class="talk-body"><div class="talk-title">Advanced DL lecture: Intro to NLP &mdash; tokens, tf-idf, bpe, word2vec, RNNs</div></div>
                     <span class="talk-number">08</span>
-                </div>
-                <div class="talk-card reveal stagger-9" data-youtube="kJmABeZPYns">
+                </a>
+                <a href="https://www.youtube.com/watch?v=kJmABeZPYns" target="_blank" rel="noopener" class="talk-card reveal stagger-9" data-youtube="kJmABeZPYns">
                     <div class="talk-thumb" style="background-image:url('https://img.youtube.com/vi/kJmABeZPYns/hqdefault.jpg')">
                         <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
                         <span class="talk-type-badge seminar">seminar</span>
@@ -445,7 +460,7 @@
                     </div>
                     <div class="talk-body"><div class="talk-title">Advanced DL seminar: NLP practice</div></div>
                     <span class="talk-number">09</span>
-                </div>
+                </a>
             </div>
         </section>
     </div>
@@ -477,6 +492,8 @@
         var frame = document.getElementById('videoFrame');
         document.querySelectorAll('[data-youtube]').forEach(function(card) {
             card.addEventListener('click', function(e) {
+                // Let modified clicks (cmd/ctrl/middle) open the real YouTube link in a new tab.
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
                 e.preventDefault();
                 frame.src = 'https://www.youtube.com/embed/' + this.dataset.youtube + '?autoplay=1';
                 modal.classList.add('active');

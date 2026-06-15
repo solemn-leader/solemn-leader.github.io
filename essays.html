@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Essays by Daniil Zimerman (Даниил Цимерман) — notes on machine learning, engineering, and ideas." />
     <link rel="canonical" href="https://daniilzimerman.com/essays.html" />
+    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png" />
     <title>Essays — Daniil Zimerman</title>
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Essays — Daniil Zimerman" />
+    <meta property="og:description" content="Notes on machine learning, engineering, and ideas by Daniil Zimerman (Даниил Цимерман)." />
+    <meta property="og:image" content="https://daniilzimerman.com/images/og-card.jpg" />
+    <meta property="og:url" content="https://daniilzimerman.com/essays.html" />
+    <meta property="og:locale" content="en_US" />
     <style>
         body {
             font-family: verdana;
@@ -16,71 +25,29 @@
             color: #000;
             max-width: 450px;
         }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            max-width: 600px;
-            line-height: 1.2;
-            margin: 0;
+        h1.title { font-size: 16px; font-weight: bold; margin: 0 0 15px; }
+        article { margin: 0 0 22px; }
+        article h2 {
+            font-size: 13px;
+            font-weight: bold;
+            margin: 0 0 6px;
         }
-        td {
-            padding: 1px 0;
-            vertical-align: top;
-        }
-        .bullet-cell {
-            width: 10px;
-            padding-right: 2px;
-            padding-top: 10px;
-        }
-        .bullet {
-            width: 5px;
-            height: 5px;
-            background-color: #000;
-            margin-top: 0;
-        }
+        .article-content { font-size: small; line-height: 1.5; }
         a {
             color: #0000AA;
             cursor: pointer;
             text-decoration: underline;
             font-size: small;
         }
-        a:visited {
-            color: #000;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .title {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .article-content {
-            font-size: small;
-            line-height: 1.4;
-        }
-        .back-link {
-            display: block;
-            margin-top: 30px;
-        }
+        a:visited { color: #000; }
+        .nav-link { display: block; margin-bottom: 18px; }
         .footer {
             margin-top: 20px;
             padding: 10px 0;
             font-size: small;
             border-top: 1px solid #eee;
         }
-        .error {
-            color: red;
-            margin-bottom: 10px;
-        }
-        .loading {
-            font-size: small;
-            color: #666;
-        }
+        .error { color: red; margin-bottom: 10px; }
     </style>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -97,8 +64,30 @@
     <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+    <!--
+      Essays are authored in the Telegram channel @solemn_leaderr and rendered
+      statically here so the page is crawlable and works without JavaScript.
+      The script below tries to refresh from Telegram, but only replaces the
+      content on a successful fetch — a CORS/network failure leaves the static
+      content below untouched.
+    -->
     <div id="app">
-        <div class="loading">Loading essays...</div>
+        <a href="index.html" class="nav-link">← Daniil Zimerman</a>
+        <h1 class="title">Essays</h1>
+
+        <article>
+            <h2>Заголовок</h2>
+            <div class="article-content">Умная мысль 1. Умная мысль 1. Умная мысль 1. Умная мысль 1.<br><br>Smart thought 2. Smart thought 2. Smart thought 2. Smart thought 2.</div>
+        </article>
+
+        <article>
+            <h2>бебебе</h2>
+            <div class="article-content">бебебе</div>
+        </article>
+
+        <div class="footer">
+            <a href="https://t.me/solemn_leaderr" target="_blank" rel="noopener">source</a>
+        </div>
     </div>
 
     <script>
@@ -108,124 +97,52 @@
         async function fetchArticles() {
             const response = await fetch(TELEGRAM_URL);
             const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
+            const doc = new DOMParser().parseFromString(html, "text/html");
 
             const articles = [];
-            const messages = doc.querySelectorAll(".tgme_widget_message_text");
-
-            messages.forEach(messageText => {
+            doc.querySelectorAll(".tgme_widget_message_text").forEach(messageText => {
                 const text = messageText.textContent.trim();
                 if (!text || text.includes("Channel created")) return;
 
                 const bold = messageText.querySelector("b");
                 let header, content;
-
                 if (bold) {
                     header = bold.textContent.trim();
-                    // Clone to avoid mutating original
                     const clone = messageText.cloneNode(true);
                     const cloneBold = clone.querySelector("b");
                     if (cloneBold) cloneBold.remove();
                     content = clone.innerHTML.trim();
                 } else {
                     header = text.split("\n")[0];
-                    content = text;
+                    content = messageText.innerHTML.trim();
                 }
-
-                // Clean up leading/trailing <br> tags
                 content = content.replace(/^(<br\s*\/?>)+/i, "").replace(/(<br\s*\/?>)+$/i, "");
-
                 articles.push({ title: header, content: content });
             });
-
             return articles;
         }
 
-        function renderList(articles) {
+        function render(articles) {
             const app = document.getElementById("app");
-
-            let tableRows = "";
-            articles.forEach(article => {
-                const encodedTitle = encodeURIComponent(article.title);
-                tableRows += `<tr>
-                    <td class="bullet-cell"><div class="bullet"></div></td>
-                    <td><a href="#" onclick="showArticle('${encodedTitle}'); return false;">${article.title}</a></td>
-                </tr>`;
-            });
-
+            const items = articles.map(a => `
+                <article>
+                    <h2>${a.title}</h2>
+                    <div class="article-content">${a.content}</div>
+                </article>`).join("");
             app.innerHTML = `
-                <div class="header">
-                    <div class="title">Essays</div>
-                </div>
-                <table>${tableRows}</table>
+                <a href="index.html" class="nav-link">← Daniil Zimerman</a>
+                <h1 class="title">Essays</h1>
+                ${items}
                 <div class="footer">
-                    <a href="https://t.me/${TELEGRAM_CHANNEL}" target="_blank">source</a>
-                </div>
-            `;
+                    <a href="https://t.me/${TELEGRAM_CHANNEL}" target="_blank" rel="noopener">source</a>
+                </div>`;
         }
 
-        function renderArticle(article) {
-            const app = document.getElementById("app");
-            app.innerHTML = `
-                <div class="header">
-                    <div class="title">${article.title}</div>
-                </div>
-                <div class="article-content">
-                    ${article.content}
-                </div>
-                <a href="#" class="back-link" onclick="renderList(window._articles); return false;">← Back to articles</a>
-            `;
-        }
-
-        window.showArticle = function(encodedTitle) {
-            const title = decodeURIComponent(encodedTitle);
-            const article = window._articles.find(a => a.title === title);
-            if (article) {
-                renderArticle(article);
-                history.pushState({ title: title }, "", `?title=${encodedTitle}`);
-            }
-        };
-
-        window.addEventListener("popstate", function(event) {
-            if (event.state && event.state.title) {
-                const article = window._articles.find(a => a.title === event.state.title);
-                if (article) {
-                    renderArticle(article);
-                    return;
-                }
-            }
-            renderList(window._articles);
-        });
-
-        // Init
-        fetchArticles().then(articles => {
-            window._articles = articles;
-
-            // Check if URL has a title parameter
-            const params = new URLSearchParams(window.location.search);
-            const titleParam = params.get("title");
-
-            if (titleParam) {
-                const article = articles.find(a => a.title === titleParam);
-                if (article) {
-                    renderArticle(article);
-                    return;
-                }
-            }
-
-            renderList(articles);
-        }).catch(err => {
-            document.getElementById("app").innerHTML = `
-                <div class="header">
-                    <div class="title">Essays</div>
-                </div>
-                <div class="error">Failed to load essays. Please try again later.</div>
-                <div class="footer">
-                    <a href="https://t.me/${TELEGRAM_CHANNEL}" target="_blank">source</a>
-                </div>
-            `;
-        });
+        // Progressive enhancement: refresh from Telegram, but only on success.
+        // On failure (e.g. CORS), keep the static content already in the page.
+        fetchArticles()
+            .then(articles => { if (articles && articles.length) render(articles); })
+            .catch(() => { /* keep static content */ });
     </script>
 </body>
 </html>
