@@ -22,3 +22,4 @@
 
 - Habr (Tinkoff): Few-shot intent classification system — https://habr.com/en/company/tinkoff/blog/696756/
 - ITMO News interview — https://news.itmo.ru/en/university_live/achievements/news/9976/
+- Essays — https://daniilzimerman.com/essays.html
